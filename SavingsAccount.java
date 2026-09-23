@@ -1,27 +1,47 @@
 public class SavingsAccount {
+    //~ Fields ................................................................
     String accountName;
     int accountNumber;
     float interest;
     float withdrawlLimit;
     float balance;
 
-    SavingsAccount(String accountName, int accountNumber, float interest, float withdrawalLimit) {
+    
+    //~ Constructors ..........................................................
+    /**
+     * Constructs the SavingsAccount object
+     */
+    SavingsAccount(String accountName, int accountNumber) {
         this.accountName = accountName;
         this.accountNumber = accountNumber;
-        this.interest = interest;
-        this.withdrawlLimit = withdrawalLimit;
+        this.interest = 0.05F;
+        this.withdrawlLimit = 500;
         this.balance = 0.0f;
     }
-
-    public float getInterest(int months) {
-        return balance * (interest / 100) * months;
+//~Public  Methods ........................................................
+    /**
+     * Returns the interest rate for the savings account
+     */
+    public float getInterest() {
+        return interest;
     }
-
-    public float applyInterest() {
-        float interestAmount = balance * (interest / 100);
+    /**
+     * Applies interest to the account balance
+     * @param months
+     * @return the amount of interest applied
+     */
+    public float applyInterest(int months) {
+        float interestAmount = balance * (interest) * months;
         balance += interestAmount;
         return interestAmount;
     }
 
+    /**
+     * Returns the withdrawal limit for the savings account
+     * @return the withdrawal limit
+     */
+    public float getWithdrawalLimit() {
+        return withdrawlLimit;
+    }
 
 }
