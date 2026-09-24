@@ -5,7 +5,7 @@ import java.util.Scanner;
  *  The UI for the bank application
  * 
  *  @author Caleb Terstegen
- *  @version 9/24/2026
+ *  @version 2026.09.24
  */
 public class UserInterface
 {
