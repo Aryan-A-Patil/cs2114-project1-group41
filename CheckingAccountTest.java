@@ -54,11 +54,12 @@ public class CheckingAccountTest
      */
     public void testWithdraw() {
         assertEquals(0.0F, account1.getBalance(), 0.001F);
-        assertEquals(0.0F, account1.withdraw(100.0F), 0.001F);
+        assertFalse(account1.withdraw(100.0F));
         assertEquals(0.0F, account1.getBalance(), 0.001F);
+
         account1.deposit(100.0F);
         assertEquals(100.0F, account1.getBalance(), 0.001F);
-        assertEquals(0.0F, account1.withdraw(100.0F), 0.001F);
+        assertTrue(account1.withdraw(100.0F));
         assertEquals(0.0F, account1.getBalance(), 0.001F);
     }
 }
