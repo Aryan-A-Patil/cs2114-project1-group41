@@ -4,9 +4,54 @@ public class CheckingAccountTest
     extends TestCase
 {
     //~ Fields ................................................................
+    private CheckingAccount account1;
 
     //~ Constructors ..........................................................
 
     //~Public  Methods ........................................................
-
+    /**
+     * sets up
+     */
+    public void setUp() {
+        account1 = new CheckingAccount("John", 123456);
+    }
+    
+    /**
+     * tests the get balance method
+     */
+    public void testGetBalance() {
+        assertEquals(0.0, account1.getBalance(), 0.001);
+    }
+    /**
+     * tests the get account number method
+     */
+    public void testGetAccountNumber() {
+        assertEquals(123456, account1.getAccountNumber());
+    }
+    /**
+     * tests the get account name method
+     */
+    public void testGetAccountName() {
+        assertEquals("John", account1.getAccountName());
+    }
+    /**
+     * tests the deposit method
+     */
+    public void testDeposit() {
+        assertEquals(0.0, account1.getBalance(), 0.001);
+        account1.deposit((float)100.0);
+        assertEquals(100.0, account1.getBalance(), 0.001);
+    }
+    /**
+     * tests the withdraw method
+     */
+    public void testWithdraw() {
+        assertEquals(0.0, account1.getBalance(), 0.001);
+        assertEquals(0.0, account1.withdraw((float)100.0), 0.001);
+        assertEquals(0.0, account1.getBalance(), 0.001);
+        account1.deposit((float)100.0);
+        assertEquals(100.0, account1.getBalance(), 0.001);
+        assertEquals(0.0, account1.withdraw((float)100.0), 0.001);
+        assertEquals(0.0, account1.getBalance(), 0.001);
+    }
 }
