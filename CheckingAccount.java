@@ -1,4 +1,4 @@
-public class CheckingsAccount {
+public class CheckingAccount {
         //~ Fields ................................................................
     String accountName;
     int accountNumber;
@@ -8,7 +8,7 @@ public class CheckingsAccount {
     /**
      * Constructs the SavingsAccount object
      */
-    CheckingsAccount(String accountName, int accountNumber) {
+    CheckingAccount(String accountName, int accountNumber) {
         this.accountName = accountName;
         this.accountNumber = accountNumber;
          this.balance = 0.0f;}
