@@ -1,9 +1,7 @@
 
 public class SavingsAccount
-extends CheckingsAccount {
+extends CheckingAccount {
     //~ Fields ................................................................
-    String accountName;
-    int accountNumber;
     float interest;
     float withdrawlLimit;
     float balance;
@@ -14,8 +12,7 @@ extends CheckingsAccount {
      * Constructs the SavingsAccount object
      */
     SavingsAccount(String accountName, int accountNumber) {
-        this.accountName = accountName;
-        this.accountNumber = accountNumber;
+        super(accountName, accountNumber);
         this.interest = 0.05F;
         this.withdrawlLimit = 500;
         this.balance = 0.0f;
@@ -34,8 +31,8 @@ extends CheckingsAccount {
      * @return the amount of interest applied
      */
     public float applyInterest(int months) {
-        float interestAmount = balance * (interest) * months;
-        balance += interestAmount;
+        float interestAmount = super.getBalance() * (interest) * months;
+        super.deposit(interestAmount);
         return interestAmount;
     }
 
@@ -49,7 +46,7 @@ extends CheckingsAccount {
 
     @Override 
     public float withdraw(float amount) {
-        if (amount <= balance && amount <= withdrawlLimit) {
+        if (amount <= super.getBalance() && amount <= withdrawlLimit) {
             balance -= amount;
         }
         else {
