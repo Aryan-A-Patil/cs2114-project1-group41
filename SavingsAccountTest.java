@@ -1,5 +1,12 @@
 import student.TestCase;
-
+/**
+ * // -------------------------------------------------------------------------
+/**
+ *  Tests the savings account class
+ * 
+ *  @author Caleb Terstegen
+ *  @version 2026.09.24
+ */
 public class SavingsAccountTest
     extends TestCase
 {

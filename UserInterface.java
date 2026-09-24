@@ -1,9 +1,16 @@
 import java.util.Scanner;
-
+/**
+ * // -------------------------------------------------------------------------
+/**
+ *  The UI for the bank application
+ * 
+ *  @author Caleb Terstegen
+ *  @version 2026.09.24
+ */
 public class UserInterface
 {
     //~ Fields ................................................................
-    private static AccountManagment accounts;
+    private static AccountManagement accounts;
     private static  Scanner scanner;
     private static String input;
 
@@ -12,9 +19,6 @@ public class UserInterface
      * Constructs the user interface and initializes the data
      */
     public UserInterface() {
-        accounts = new AccountManagment();
-        scanner = new Scanner(System.in);
-        input = "";
     }
     //~Public  Methods ........................................................
     /**
@@ -23,9 +27,11 @@ public class UserInterface
      *      args is the arguments for running the program
      */
     public static void main(String[] args) {
+        accounts = new AccountManagement();
+        scanner = new Scanner(System.in);
         input = "";
         while(true) {
-            System.out.println("Your listed options are:/ncreate account/ndelete account/nlist account/ndeposit/napply interest/ntransfer");
+            System.out.println("Your listed options are:\ncreate account\ndelete account\nlist account\ndeposit\napply interest\ntransfer");
             System.out.println("Please type the name of the action you wish to perform");
             System.out.println("type exit at anytime to exit an action or the app");
             input = scanner.nextLine();
@@ -321,7 +327,7 @@ public class UserInterface
                 continue;
             } 
             System.out.println("Depositing $" + withdraw);
-            if(account.transfer(from, to, withdraw)) {
+            if(accounts.transfer(from, to, withdraw)) {
                 System.out.println("Transfer successful");
             }else {
                 System.out.println("Transfer unsuccessful");

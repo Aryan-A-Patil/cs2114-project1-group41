@@ -30,19 +30,20 @@ public class CheckingAccount {
         return accountName;
     }
 
-    public float withdraw(float amount) {
-        if (amount <= balance) {
-            balance -= amount;
+    public boolean withdraw(float amount) {
+        if (amount <= 0 || amount > balance) {
+            return false;
         }
-        else{
-            System.out.println("Insufficient funds");
-        }
-        return balance;
-    }
+        balance -= amount;
+        return true;
+    }   
 
-    public float deposit(float amount) {
+    public boolean deposit(float amount) {
+        if (amount <= 0) {
+            return false;
+        }
         balance += amount;
-        return balance;
+        return true;
     }
 }
 
