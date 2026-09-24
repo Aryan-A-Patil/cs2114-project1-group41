@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class UserInterface
 {
     //~ Fields ................................................................
-    private AccountManagment accounts;
-    private Scanner scanner;
-    private String input;
+    private static AccountManagment accounts;
+    private static  Scanner scanner;
+    private static String input;
 
     //~ Constructors ..........................................................
     /**
@@ -22,7 +22,7 @@ public class UserInterface
      * @param
      *      args is the arguments for running the program
      */
-    public void main(String[] args) {
+    public static void main(String[] args) {
         input = "";
         while(true) {
             System.out.println("Your listed options are:/ncreate account/ndelete account/nlist account/ndeposit/napply interest/ntransfer");
@@ -56,7 +56,7 @@ public class UserInterface
     /**
      * Allows for the creation of a new account
      */
-    public void createAccount() {
+    public static void createAccount() {
         input = "";
         System.out.println("You are choosing to make an account");
         System.out.println("");
@@ -86,7 +86,7 @@ public class UserInterface
     /**
      * Allows for the deletion of existing accounts
      */
-    public void deleteAccount() {
+    public static void deleteAccount() {
         input = "";
         int account = 0;
         System.out.println("You are choosing to delete an account");
@@ -113,7 +113,7 @@ public class UserInterface
     /**
      * lists the accounts
      */
-    public void listAccount() {
+    public static void listAccount() {
         input = "";
         CheckingAccount account;
         System.out.println("You are choosing to list an account");
@@ -140,7 +140,7 @@ public class UserInterface
     /**
      * Allows for depositing into an account
      */
-    public void deposit() {
+    public static void deposit() {
         int other = 0; 
         input = "";
         CheckingAccount account;
@@ -184,7 +184,7 @@ public class UserInterface
     /**
      * Allows for withdrawal from an account
      */
-    public void withdraw() {
+    public static void withdraw() {
         input = "";
         CheckingAccount account;
         float withdraw = 0;
@@ -226,10 +226,10 @@ public class UserInterface
     /**
      * applies interest to a savings account
      */
-    public void interest() {
+    public static void interest() {
         input = "";
         SavingsAccount account;
-        float months = 0;
+        int months = 0;
         System.out.println("You are choosing to apply interest");
         System.out.println("");
         while(true) {
@@ -239,7 +239,7 @@ public class UserInterface
                 return;
             }
             try {
-            account = (CheckingAccount) accounts.getAccount(Integer.parseInt(input));
+            account = (SavingsAccount) accounts.getAccount(Integer.parseInt(input));
             }
             catch(Exception e) {
                 System.out.println("Invalid account number");
@@ -254,7 +254,7 @@ public class UserInterface
                 return;
             }
             try {
-            months = Float.parseFloat(input);
+            months = Integer.parseInt(input);
             }
             catch(Exception e) {
                 System.out.println("Invalid month amount");
@@ -269,7 +269,7 @@ public class UserInterface
     /**
      * Transfers from account to account
      */
-    public void transfer() {
+    public static void transfer() {
         input = "";
         int from = 0;
         int to = 0;

@@ -20,7 +20,7 @@ public class CheckingAccountTest
      * tests the get balance method
      */
     public void testGetBalance() {
-        assertEquals(0.0, account1.getBalance(), 0.001);
+        assertEquals(0.0F, account1.getBalance(), 0.001F);
     }
     /**
      * tests the get account number method
@@ -38,20 +38,20 @@ public class CheckingAccountTest
      * tests the deposit method
      */
     public void testDeposit() {
-        assertEquals(0.0, account1.getBalance(), 0.001);
-        account1.deposit((float)100.0);
-        assertEquals(100.0, account1.getBalance(), 0.001);
+        assertEquals(0.0F, account1.getBalance(), 0.001F);
+        account1.deposit(100.0F);
+        assertEquals(100.0F, account1.getBalance(), 0.001F);
     }
     /**
      * tests the withdraw method
      */
     public void testWithdraw() {
-        assertEquals(0.0, account1.getBalance(), 0.001);
-        assertEquals(0.0, account1.withdraw((float)100.0), 0.001);
-        assertEquals(0.0, account1.getBalance(), 0.001);
-        account1.deposit((float)100.0);
-        assertEquals(100.0, account1.getBalance(), 0.001);
-        assertEquals(0.0, account1.withdraw((float)100.0), 0.001);
-        assertEquals(0.0, account1.getBalance(), 0.001);
+        assertEquals(0.0F, account1.getBalance(), 0.001F);
+        assertEquals(0.0F, account1.withdraw(100.0F), 0.001F);
+        assertEquals(0.0F, account1.getBalance(), 0.001F);
+        account1.deposit(100.0F);
+        assertEquals(100.0F, account1.getBalance(), 0.001F);
+        assertEquals(0.0F, account1.withdraw(100.0F), 0.001F);
+        assertEquals(0.0F, account1.getBalance(), 0.001F);
     }
 }
