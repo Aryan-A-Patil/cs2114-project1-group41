@@ -4,7 +4,6 @@ extends CheckingAccount {
     //~ Fields ................................................................
     float interest;
     float withdrawlLimit;
-    float balance;
 
     
     //~ Constructors ..........................................................
@@ -15,7 +14,6 @@ extends CheckingAccount {
         super(accountName, accountNumber);
         this.interest = 0.05F;
         this.withdrawlLimit = 500;
-        this.balance = 0.0f;
     }
 
 //~Public  Methods ........................................................
@@ -45,14 +43,11 @@ extends CheckingAccount {
     }
 
     @Override 
-    public float withdraw(float amount) {
-        if (amount <= super.getBalance() && amount <= withdrawlLimit) {
-            balance -= amount;
+    public boolean withdraw(float amount) {
+        if (amount > withdrawlLimit) {
+            return false;
         }
-        else {
-            System.out.println("Withdrawal amount exceeds limit or insufficient funds");
-        }
-        return balance;
+        return super.withdraw(amount);
     }
 
 }
