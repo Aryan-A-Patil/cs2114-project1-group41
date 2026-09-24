@@ -19,9 +19,39 @@ public class UserInterface
     //~Public  Methods ........................................................
     /**
      * The main menu where other functionalities and options are selected from
+     * @param
+     *      args is the arguments for running the program
      */
-    public void mainMenu() {
-        System.out.println("aaa");
+    public void main(String[] args) {
+        input = "";
+        while(true) {
+            System.out.println("Your listed options are:/ncreate account/ndelete account/nlist account/ndeposit/napply interest/ntransfer");
+            System.out.println("Please type the name of the action you wish to perform");
+            System.out.println("type exit at anytime to exit an action or the app");
+            input = scanner.nextLine();
+            if(input.toLowerCase().equals("exit")) {
+                return;
+            }
+            if(input.toLowerCase().equals("create account")) {
+                createAccount();
+            }else if(input.toLowerCase().equals("delete account")) {
+                deleteAccount();
+            }else if(input.toLowerCase().equals("list account")) {
+                listAccount();
+            }else if(input.toLowerCase().equals("deposit")) {
+                deposit();
+            }else if(input.toLowerCase().equals("withdraw")) {
+                withdraw();
+            }else if(input.toLowerCase().equals("apply interest")) {
+                interest();
+            }else if(input.toLowerCase().equals("transfer")) {
+                transfer();
+            }else {
+                System.out.println("Invalid action");
+                continue;
+            }
+            
+        }
     }
     /**
      * Allows for the creation of a new account
@@ -81,9 +111,37 @@ public class UserInterface
     }
     
     /**
-     * Allows for deposit for an account
+     * lists the accounts
+     */
+    public void listAccount() {
+        input = "";
+        CheckingAccount account;
+        System.out.println("You are choosing to list an account");
+        System.out.println("");
+        while(true) {
+            System.out.println("Input account number");
+            input = scanner.nextLine();
+            if(input.toLowerCase().equals("exit")) {
+                return;
+            }
+            try {
+            account = accounts.getAccount(Integer.parseInt(input));
+            }
+            catch(Exception e) {
+                System.out.println("Invalid account number");
+                continue;
+            }
+            System.out.println("Account details:");
+            System.out.println(account.toString());
+            break;
+        } 
+    }
+    
+    /**
+     * Allows for depositing into an account
      */
     public void deposit() {
+        int other = 0; 
         input = "";
         CheckingAccount account;
         float deposit = 0;
@@ -124,7 +182,7 @@ public class UserInterface
     }
     
     /**
-     * Allows for withdraw for an account
+     * Allows for withdrawal from an account
      */
     public void withdraw() {
         input = "";
@@ -165,4 +223,111 @@ public class UserInterface
             return;
         }
     }
+    /**
+     * applies interest to a savings account
+     */
+    public void interest() {
+        input = "";
+        SavingsAccount account;
+        float months = 0;
+        System.out.println("You are choosing to apply interest");
+        System.out.println("");
+        while(true) {
+            System.out.println("Please type the account number of the account you would like to apply interest to");
+            input = scanner.nextLine();
+            if(input.toLowerCase().equals("exit")) {
+                return;
+            }
+            try {
+            account = (CheckingAccount) accounts.getAccount(Integer.parseInt(input));
+            }
+            catch(Exception e) {
+                System.out.println("Invalid account number");
+                continue;
+            }
+            break;
+        }
+        while(true) {
+            System.out.println("Applying interest to account " + input + " please input amount of months to apply interest");
+            input = scanner.nextLine();
+            if(input.toLowerCase().equals("exit")) {
+                return;
+            }
+            try {
+            months = Float.parseFloat(input);
+            }
+            catch(Exception e) {
+                System.out.println("Invalid month amount");
+                continue;
+            } 
+            System.out.println("Applying interest for " + months + " months");
+            account.applyInterest(months);
+            return;
+        }
+    }
+    
+    /**
+     * Transfers from account to account
+     */
+    public void transfer() {
+        input = "";
+        int from = 0;
+        int to = 0;
+        CheckingAccount account;
+        float withdraw = 0;
+        System.out.println("You are choosing to transfer");
+        System.out.println("");
+        while(true) {
+            System.out.println("Please type the account number of the account you would like to withdraw from");
+            input = scanner.nextLine();
+            if(input.toLowerCase().equals("exit")) {
+                return;
+            }
+            try {
+            from = Integer.parseInt(input);
+            }
+            catch(Exception e) {
+                System.out.println("Invalid account number");
+                continue;
+            }
+            break;
+        }
+        while(true) {
+            System.out.println("Please type the account number of the account you would like to deposit into");
+            input = scanner.nextLine();
+            if(input.toLowerCase().equals("exit")) {
+                return;
+            }
+            try {
+            to = Integer.parseInt(input);
+            }
+            catch(Exception e) {
+                System.out.println("Invalid account number");
+                continue;
+            }
+            break;
+        }
+        while(true) {
+            System.out.println("Withdrawing from account " + from + " please input amount to withdraw");
+            input = scanner.nextLine();
+            if(input.toLowerCase().equals("exit")) {
+                return;
+            }
+            try {
+            withdraw = Float.parseFloat(input);
+            }
+            catch(Exception e) {
+                System.out.println("Invalid withdraw amount");
+                continue;
+            } 
+            System.out.println("Depositing $" + withdraw);
+            if(account.transfer(from, to, withdraw)) {
+                System.out.println("Transfer successful");
+            }else {
+                System.out.println("Transfer unsuccessful");
+            }
+            return;
+        }
+    }
+    
 }
