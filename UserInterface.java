@@ -52,7 +52,7 @@ public UserInterface() {}
             }else if(input.toLowerCase().equals("transfer")) {
                 transfer();
             }else {
-                System.out.println("Invalid action");
+                System.out.println("Invalid action\n");
                 continue;
             }
             
@@ -182,6 +182,7 @@ public UserInterface() {}
             } 
             System.out.println("Depositing $" + deposit);
             account.deposit(deposit);
+            System.out.println("New balance: $" + account.getBalance());
             return;
         }
     }
@@ -223,8 +224,9 @@ public UserInterface() {}
                 System.out.println("Invalid withdraw amount");
                 continue;
             } 
-            System.out.println("Withdrawm ing $" + withdraw);
+            System.out.println("Withdrawing $" + withdraw);
             account.withdraw(withdraw);
+           System.out.println("New balance: $" + account.getBalance());
             return;
         }
     }
