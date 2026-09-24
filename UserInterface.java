@@ -321,7 +321,7 @@ public class UserInterface
                 continue;
             } 
             System.out.println("Depositing $" + withdraw);
-            if(account.transfer(from, to, withdraw)) {
+            if(accounts.transfer(from, to, withdraw)) {
                 System.out.println("Transfer successful");
             }else {
                 System.out.println("Transfer unsuccessful");
