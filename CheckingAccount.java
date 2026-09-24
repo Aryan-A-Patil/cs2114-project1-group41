@@ -45,6 +45,10 @@ public class CheckingAccount {
         balance += amount;
         return true;
     }
+
+    public String toString() {
+        return "CheckingAccount{name='" + accountName + "', number=" + accountNumber + ", balance=" + balance + "}";
+    }
 }
 
 

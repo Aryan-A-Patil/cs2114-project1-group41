@@ -50,4 +50,9 @@ extends CheckingAccount {
         return super.withdraw(amount);
     }
 
+    @Override 
+    public String toString() {
+        return "SavingsAccount{name='" + accountName + "', number=" + accountNumber + ", balance=" + super.getBalance() + ", interest=" + interest + ", withdrawalLimit=" + withdrawlLimit + "}";
+    }
+
 }
