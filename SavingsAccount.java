@@ -14,8 +14,7 @@ extends CheckingsAccount {
      * Constructs the SavingsAccount object
      */
     SavingsAccount(String accountName, int accountNumber) {
-        this.accountName = accountName;
-        this.accountNumber = accountNumber;
+        super(accountName, accountNumber);
         this.interest = 0.05F;
         this.withdrawlLimit = 500;
         this.balance = 0.0f;
