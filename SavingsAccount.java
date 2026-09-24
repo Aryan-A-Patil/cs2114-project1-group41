@@ -1,4 +1,6 @@
-public class SavingsAccount {
+
+public class SavingsAccount
+extends CheckingsAccount {
     //~ Fields ................................................................
     String accountName;
     int accountNumber;
@@ -18,6 +20,7 @@ public class SavingsAccount {
         this.withdrawlLimit = 500;
         this.balance = 0.0f;
     }
+
 //~Public  Methods ........................................................
     /**
      * Returns the interest rate for the savings account
@@ -42,6 +45,17 @@ public class SavingsAccount {
      */
     public float getWithdrawalLimit() {
         return withdrawlLimit;
+    }
+
+    @Override 
+    public float withdraw(float amount) {
+        if (amount <= balance && amount <= withdrawlLimit) {
+            balance -= amount;
+        }
+        else {
+            System.out.println("Withdrawal amount exceeds limit or insufficient funds");
+        }
+        return balance;
     }
 
 }
