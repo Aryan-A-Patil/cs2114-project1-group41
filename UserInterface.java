@@ -18,8 +18,7 @@ public class UserInterface
     /**
      * Constructs the user interface and initializes the data
      */
-    public UserInterface() {
-    }
+public UserInterface() {}
     //~Public  Methods ........................................................
     /**
      * The main menu where other functionalities and options are selected from
@@ -31,7 +30,7 @@ public class UserInterface
         scanner = new Scanner(System.in);
         input = "";
         while(true) {
-            System.out.println("Your listed options are:\ncreate account\ndelete account\nlist account\ndeposit\napply interest\ntransfer");
+            System.out.println("Your listed options are:\ncreate account\ndelete account\nlist account\ndeposit\nwithdraw\napply interest\ntransfer");
             System.out.println("Please type the name of the action you wish to perform");
             System.out.println("type exit at anytime to exit an action or the app");
             input = scanner.nextLine();
@@ -78,8 +77,8 @@ public class UserInterface
             }else if(input.toLowerCase().equals("saving") || input.toLowerCase().equals("savings")){
                 System.out.println("Specify account name");
                 input = scanner.nextLine();
-                System.out.println("Successfully created checking account named " + 
-                input + " with account number " + accounts.createChecking(input));
+                System.out.println("Successfully created savings account named " + 
+                input + " with account number " + accounts.createSavings(input));
                 break;
             
             }else if(input.toLowerCase().equals("exit")){
@@ -224,7 +223,7 @@ public class UserInterface
                 System.out.println("Invalid withdraw amount");
                 continue;
             } 
-            System.out.println("Depositing $" + withdraw);
+            System.out.println("Withdrawm ing $" + withdraw);
             account.withdraw(withdraw);
             return;
         }
