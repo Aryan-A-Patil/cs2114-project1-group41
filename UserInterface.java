@@ -1,5 +1,12 @@
 import java.util.Scanner;
-
+/**
+ * // -------------------------------------------------------------------------
+/**
+ *  The UI for the bank application
+ * 
+ *  @author Caleb Terstegen
+ *  @version 9/24/2026
+ */
 public class UserInterface
 {
     //~ Fields ................................................................
