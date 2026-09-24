@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class UserInterface
 {
     //~ Fields ................................................................
-    private static AccountManagment accounts;
+    private static AccountManagement accounts;
     private static  Scanner scanner;
     private static String input;
 
@@ -19,7 +19,7 @@ public class UserInterface
      * Constructs the user interface and initializes the data
      */
     public UserInterface() {
-        accounts = new AccountManagment();
+        accounts = new AccountManagement();
         scanner = new Scanner(System.in);
         input = "";
     }
